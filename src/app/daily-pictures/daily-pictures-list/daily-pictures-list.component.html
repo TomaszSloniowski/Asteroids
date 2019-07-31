@@ -1,0 +1,137 @@
+
+<div class="">
+
+    <!--
+      <div class="searchform-container">
+          <label for="keyword">Start date</label>
+          <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+              outsideDays="hidden">
+          </ngb-datepicker>
+          <ng-template #t let-date let-focused="focused">
+              <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                  [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+                  (mouseleave)="hoveredDate = null">
+                  {{ date.day }}
+              </span>
+          </ng-template>
+     <pre>From: {{ fromDate | json }} </pre>
+          <pre>To: {{ toDate | json }} </pre>
+    -->
+  
+  
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="searchform-container input-group">
+  <!--
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+              #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+      -->
+      <!--
+      <div class="form-group">
+        <label for="keyword">Date</label>
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+            #d="ngbDatepicker" [placement]="placement" [positionTarget]="buttonEl" [displayMonths]="2" [dayTemplate]="t"
+            outsideDays="hidden" (select)="onDateSelection($event)">
+          <ng-template #t let-date let-focused="focused">
+            <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null">
+              {{ date.day }}
+            </span>
+          </ng-template>
+          <div class="input-group-append">
+            <button #buttonEl class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+  -->
+  
+      <div class="form-group">
+        <label for="keyword">Enter a Keyword</label>
+        <input id="keyword" name="keyword" class="form-control" [(ngModel)]="FormSettings.keyword" required
+          #nameField="ngModel" (blur)="onBlur(keywordField)" [class.field-error]="form.submitted && keywordField.invalid">
+        <div [hidden]="!form.submitted || keywordField.valid" class="alert alert-danger">
+          Enter a keyword
+        </div>
+        <button class="btn btn-success button-search">Search</button>
+      </div>
+  
+    
+
+  <div class="checkbox-list-container form-group">
+        <label for="keyword">Select keywords</label>
+    <div class="btn-group btn-group-sm btn-group-toggle">
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Earth"> Earth
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Sun"> Sun
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Moon"> Moon
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Mercury"> Mercury
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Venus"> Venus
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Mars"> Mars
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Jupiter"> Jupiter
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Saturn"> Saturn
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Uran"> Uran
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Neptun"> Neptun
+      </label>
+      <label class="btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Pluton"> Pluton
+      </label>
+  
+    </div>
+
+  </div>
+
+</form>
+
+
+  </div>
+  <!--
+
+  <p> keyword: {{ FormSettings.keyword }}</p>
+  <pre>{{checkboxList | json}}</pre> -->
+
+
+
+  <div class="list-container">
+    <div *ngFor="let pictureOfDay of PicturesOfDay">
+      <div *ngIf="pictureOfDay.title.match(keywordValue) || pictureOfDay.explanation.match(keywordValue)" class="images-list">
+        <img  class="image" src={{pictureOfDay.hdurl}}>
+        <p class="images-list-item"> {{pictureOfDay.title}} </p>
+        </div>
+    </div>
+  </div>
+
+  <!--
+  <div class="container">
+        <button class="btn-outline-secondary">start</button>
+     <div *ngFor="let pictureOfDay of PicturesOfDay" class="thumbnail">
+         <img class="image" src={{pictureOfDay.hdurl}} width="100%"> 
+      <h4>{{pictureOfDay.title}}</h4>
+  </div>
+  -->

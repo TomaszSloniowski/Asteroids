@@ -1,0 +1,130 @@
+p,
+img {
+  margin: 0px;
+}
+
+.container {
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+.searchform-container {
+  padding-top: 20px;
+  padding-left: 30px;
+  margin: 0px;
+}
+
+.checkbox-list-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 60px;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-top: 60px;
+  margin: 0;
+  width: 600px;
+}
+
+.form-group {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0px;
+}
+
+.button-search {
+  margin-top: 30px;
+}
+
+.form-inline {
+  display: flex;
+  justify-self: flex-start;
+  margin-top: 30px;
+  min-width: 270px;
+}
+
+.thumbnail {
+  padding: 10px;
+  margin: 0;
+}
+
+.image {
+  max-width: 60px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
+  margin: 0px;
+}
+
+.images-list {
+  text-decoration: none;
+  display: flex;
+  justify-self: flex-start;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.images-list-item {
+  display: flex;
+  justify-self: flex-start;
+  align-items: center;
+  font-size: 1rem;
+  padding-left: 20px;
+}
+
+h4 {
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  text-justify: auto;
+  max-width: 150px;
+  margin: 0px;
+  padding: 5px;
+}
+
+/* ------------- Date picker ----------------*/
+
+.datepicker-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 0;
+}
+
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+
+.custom-day.range,
+.custom-day:hover {
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+
+.custom-day.faded {
+  background-color: rgba(2, 117, 216, 0.5);
+}
+
+/* Datepicker popup icon */
+
+button.calendar,
+button.calendar:active {
+  width: 2.75rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+}
+
+/*-----------------------------------------------*/
