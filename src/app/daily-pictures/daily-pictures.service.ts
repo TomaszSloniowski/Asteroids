@@ -11,6 +11,8 @@ export class DailyPicturesService {
 
   newDates = [];
   picture: any;
+  pictureDate: string;
+  
 
   constructor(private http: HttpClient
     ) { }
@@ -45,4 +47,8 @@ export class DailyPicturesService {
         return picturesOfDay;
       }
 
+      getPicture(pictureDate: string) {
+        let x = { date: pictureDate }
+        return this.http.get<any>(this.PictureOfDayUrl, { params: x })
+      }
 }

@@ -14,6 +14,7 @@ export class DailyPicturesListComponent implements OnInit {
   pictureOfDay;
   PicturesOfDay;
   keywordValue: string = null;
+  checkboxListValues = [];
 
     /*-------- Search form --------*/
     originalSearchFormSettings : searchFormSettings = {
@@ -56,6 +57,7 @@ checkboxList = {
   onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.valid);
     this.keywordValue = this.FormSettings.keyword;
+
     console.log(this.keywordValue)
   }
 

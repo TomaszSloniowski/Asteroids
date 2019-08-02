@@ -4,20 +4,21 @@ img {
 }
 
 .container {
+  display: flex;
   padding-top: 20px;
-  padding-left: 30px;
+  padding-left: 0px;
+  margin: 0px;
 }
 
 .searchform-container {
+  display: flex;
   padding-top: 20px;
   padding-left: 30px;
   margin: 0px;
 }
 
 .checkbox-list-container {
-    display: flex;
-    flex-direction: column;
-    padding-left: 60px;
+  display: flex;
 }
 
 .list-container {
@@ -32,11 +33,28 @@ img {
 .form-group {
   padding-top: 20px;
   padding-bottom: 20px;
+  padding-left: 20px;
   margin: 0px;
 }
 
+select.custom-select,
+.keyword-select {
+  min-width: 150px;
+  max-width: 150px;
+  margin: 20px;
+}
+
+.custom-checkbox-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
 .button-search {
-  margin-top: 30px;
+  display: flex;
+  margin-left: 50px;
+  align-items: center;
+  justify-items: flex-end;
 }
 
 .form-inline {
