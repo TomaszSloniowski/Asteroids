@@ -28,4 +28,7 @@ export class DailyPictureDetailsComponent implements OnInit {
       console.log("Selected picture from detail: ", this.picture)
     });
   }
+  goBack() {
+    this.location.back();
+  }
 }

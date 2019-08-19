@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 
-
 import { AsteroidsListComponent } from './asteroids-list/asteroids-list.component';
 import { AsteroidsDetailsComponent } from './asteroids-details/asteroids-details.component';
+
+import { routes } from './asteroids.routing';
 
 @NgModule({
   declarations: [AsteroidsListComponent, AsteroidsDetailsComponent],
@@ -14,7 +15,8 @@ import { AsteroidsDetailsComponent } from './asteroids-details/asteroids-details
     CommonModule,
     FormsModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    RouterModule.forChild(routes)
   ],
   exports:
     [AsteroidsListComponent, AsteroidsDetailsComponent]

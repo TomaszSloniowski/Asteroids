@@ -17,9 +17,9 @@ export class DailyPicturesService {
   constructor(private http: HttpClient
     ) { }
 
-    getPicturesMonth() {
-      var startDate = new Date("2019-7-01");
-      var endDate = new Date("2019-7-10");
+    getPicturesMonth(year: string, month: string) {
+      var startDate = new Date(year + "-" + month + "-01");
+      var endDate = new Date(year + "-" + month + "-31");
       var getDateArray = function(start, end) {
           var newDates = new Array();
           var newDate = new Date(start);

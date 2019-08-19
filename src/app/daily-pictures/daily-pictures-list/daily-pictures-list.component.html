@@ -2,16 +2,19 @@
 
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="input-group searchform-container">
 
-    <select class="custom-select">
+    <select class="custom-select form-control" name="year" [(ngModel)]="FormSettings.year" required>
       <option selected>Select year</option>
       <option value="2019">2019</option>
       <option value="2018">2018</option>
       <option value="2017">2017</option>
       <option value="2016">2016</option>
-      <option value="2015">2015</option>
+      <option value="2015">2014</option>
+      <option value="2014">2013</option>
+      <option value="2013">2012</option>
+      <option value="2012">2010</option>
     </select>
 
-    <select class="custom-select">
+    <select class="custom-select" name="month" [(ngModel)]="FormSettings.month" required>
       <option selected>Select month</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -27,79 +30,116 @@
       <option value="12">12</option>
     </select>
 
-    <div class="keyword-select">
-      <input id="keyword" placeholder="Enter a keyword" name="keyword" class="form-control"
-        [(ngModel)]="FormSettings.keyword" required #nameField="ngModel" (blur)="onBlur(keywordField)"
-        [class.field-error]="form.submitted && keywordField.invalid">
-      <div [hidden]="!form.submitted || keywordField.valid" class="alert alert-danger">
+    <!--
+    <div class="form-group">
+      <div class="keyword-select">
+        <input id="keyword" name="keyword" placeholder="Enter a keyword" class="form-control"
+           required minlength="3"
+           (ngModel)]="FormSettings.keyword" required #keywordField="ngModel" (blur)="onBlur(keywordField)">
+       
+           <div *ngIf="keyword.invalid && (keyword.dirty || keyword.touched)"
+           class="alert alert-danger">
+       
+         <div *ngIf="keyword.errors.required">
+           Name is required.
+         </div>
+         <div *ngIf="keyword.errors.minlength">
+           Name must be at least 4 characters long.
+         </div>
       </div>
     </div>
+  </div>
+-->
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="keyword" placeholder="Enter a keyword" required
+        [(ngModel)]="FormSettings.keyword" name="keyword" #name="ngModel">
+    </div>
+
 
     <div class="custom-checkbox-container">
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="customCheck1">
-      <label class="custom-control-label" for="customCheck1">Search in title</label>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input form-control" id="searchInTitle" name="searchInTitle"
+          [(ngModel)]="FormSettings.searchInTitle">
+        <label class="custom-control-label" for="searchInTitle">Search in title</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input form-control" id="searchInExplanation"
+          name="searchInExplanation" [(ngModel)]="FormSettings.searchInExplanation">
+        <label class="custom-control-label" for="searchInExplanation">Search in explanation</label>
+      </div>
     </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="customCheck2">
-      <label class="custom-control-label" for="customCheck2">Search in explanation</label>
-    </div>
-  </div>
 
     <div class="button-search">
       <button class="btn btn-outline-success">Search</button>
     </div>
 
-
-    <div class="checkbox-list-container form-group">
-      <div class="btn-group btn-group-sm btn-group-toggle">
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Earth"> Earth
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Sun"> Sun
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Moon"> Moon
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Mercury"> Mercury
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Venus"> Venus
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Mars"> Mars
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Jupiter"> Jupiter
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Saturn"> Saturn
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Uran"> Uran
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Neptun"> Neptun
-        </label>
-        <label class="btn-outline-secondary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="checkboxList.Pluton"> Pluton
-        </label>
-
-      </div>
-    </div>
+    <div class="btn-group btn-group-toggle checkbox-list-container">
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Earth" name="Earth" ngbButton [(ngModel)]="checkboxList.Earth"> Earth
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Sun" name="Sun" ngbButton [(ngModel)]="checkboxList.Sun"> Sun
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Moon" name="Moon" ngbButton [(ngModel)]="checkboxList.Moon"> Moon
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Mercury" name="Mercury" ngbButton [(ngModel)]="checkboxList.Mercury"> Mercury
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Venus" name="Venus" ngbButton [(ngModel)]="checkboxList.Venus"> Venus
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Mars" name="Mars" ngbButton [(ngModel)]="checkboxList.Mars"> Mars
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Jupiter" name="Jupiter" ngbButton [(ngModel)]="checkboxList.Jupiter"> Jupiter
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Saturn" name="Saturn" ngbButton [(ngModel)]="checkboxList.Saturn"> Saturn
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Uran" name="Uran" ngbButton [(ngModel)]="checkboxList.Uran"> Uran
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Neptun" name="Neptun" ngbButton [(ngModel)]="checkboxList.Neptun"> Neptun
+      </label>
+      <label class="btn btn-outline-secondary" ngbButtonLabel>
+        <input type="checkbox" class="form-control" id="Pluton" name="Pluton" ngbButton [(ngModel)]="checkboxList.Pluton"> Pluton
+      </label>
+     </div>
   </form>
 </div>
 
-<div class="list-container">
+<div class="images-list">
+<table class="table table-hover">
   <div *ngFor="let pictureOfDay of PicturesOfDay">
-    <div *ngIf="pictureOfDay.title.match(keywordValue) || pictureOfDay.explanation.match(keywordValue)"
-      class="images-list">
-      <a [routerLink]="['../daily-picture-details', pictureOfDay.date]" routerLinkActive="active">
-      <img class="image" src={{pictureOfDay.hdurl}}>
-      <p class="images-list-item"> {{pictureOfDay.title}} </p>
-    </a>
+
+ <!--  *ngIf="FormSettings.searchInTitle == true && pictureOfDay.title.match(keywordValue) || FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(keywordValue)-->
+ <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(keywordValue)) || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(keywordValue))
+      || checkboxList.Earth == true && pictureOfDay.title.match('Earth')
+      || checkboxList.Sun == true && pictureOfDay.title.match('Sun')
+      || checkboxList.Moon == true && pictureOfDay.title.match('Moon')
+      || checkboxList.Mercury == true && pictureOfDay.title.match('Mercury')
+      || checkboxList.Venus == true && pictureOfDay.title.match('Venus')
+      || checkboxList.Mars == true && pictureOfDay.title.match('Mars')
+      || checkboxList.Jupiter == true && pictureOfDay.title.match('Jupiter')
+      || checkboxList.Saturn == true && pictureOfDay.title.match('Saturn')
+      || checkboxList.Uran == true && pictureOfDay.title.match('Uran')
+      || checkboxList.Neptun == true && pictureOfDay.title.match('Neptun')
+      || checkboxList.Pluton == true && pictureOfDay.title.match('Pluton')"
+      class="">
+      <a [routerLink]="['../daily-picture-details', pictureOfDay.date]" routerLinkActive="active"
+        class="images-list__link">
+        <!--  <img class="image" src={{pictureOfDay.hdurl}}> -->
+        <tbody>
+          <tr scope="row">
+            <td class="images-list-item">{{pictureOfDay.title}}</td>
+          </tr>
+        </tbody>
+      </a>
     </div>
   </div>
+</table>
 </div>

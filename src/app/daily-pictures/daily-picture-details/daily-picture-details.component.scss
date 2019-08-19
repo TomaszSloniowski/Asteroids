@@ -32,7 +32,9 @@
 .picture-explanation {
     display: flex;
     justify-items: start;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    padding-bottom: 20px;
+    letter-spacing: 0.03em
   }
 
 .picture-header {
@@ -44,6 +46,16 @@
   letter-spacing: 0.03em
 }
 
+p.picture__footer {
+  margin: 0px;
+  padding: 2px;
+  font-size: 0.75rem;
+  color: black;
+  font-weight: 400;
+  letter-spacing: 0.03em
+}
+
+/*
 .event__description__city {
   padding-top: 5px;
   padding-bottom: 20px;
@@ -57,8 +69,6 @@
   padding-bottom: 15px;
 }
 
-
-
 .event__description__footer__location {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -67,20 +77,32 @@
   font-weight: 600;
 }
 
-.event__description__footer__date {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 0px;
-  font-size: 1rem;
-  color: rgb(122, 201, 228);
-  font-weight: 400;
-}
 
-.event__description__footer__source {
+
+.picture__url {
   padding-top: 10px;
   padding-bottom: 20px;
   padding-left: 0px;
   font-size: 0.7rem;
   font-weight: 200;
   color: black;
+}*/
+
+.bottom__nav {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
+.bottom__nav__item {
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 100;
+  cursor: pointer;
+}
+.bottom__nav__icon {
+  padding-right: 10px;
+  font-size: 0.9rem;
+
 }
