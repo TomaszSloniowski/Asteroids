@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DailyPicturesService } from '../daily-pictures.service';
 import { searchFormSettings } from '../searchform-settings';
 import { NgForm, NgModel } from '@angular/forms';
+import { IPicture } from '../picture';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-daily-pictures-list',
@@ -10,18 +12,23 @@ import { NgForm, NgModel } from '@angular/forms';
 })
 export class DailyPicturesListComponent implements OnInit {
 
-  pictureOfDay;
-  PicturesOfDay;
+  pictureOfDay: IPicture[];
+ // PicturesOfDay: IPicture[] = [];
+  $picturesOfDay: Observable<IPicture[]>
+
   keywordValue: string = 'keyword';
-  selectedMonth: string;
-  selectedYear: string;
+  selectedMonth: number;
+  selectedYear: number;
   checkboxListValues = [];
+  errorMessage: string;
+  dateList = [];
+  newDates = [];
 
     /*-------- Search form --------*/
     originalSearchFormSettings : searchFormSettings = {
       keyword: 'keyword',
-      year: "2019",
-      month: "7",
+      year: 2019,
+      month: 9,
       searchInTitle: true,
       searchInExplanation: true
 
@@ -46,12 +53,12 @@ export class DailyPicturesListComponent implements OnInit {
       Moon: false,
     };
 
-    constructor(
-    private service: DailyPicturesService
-  ) { }
+    constructor(private service: DailyPicturesService) { }
 
   ngOnInit() {
-    
+  // this.dateList = this.service.getCurrentMonthPictures()
+  // this.PicturesOfDay = this.service.getPicturesList(this.dateList);
+   this.$picturesOfDay = this.service.getPicturesList(this.dateList);
   }
 
   onBlur(field : NgModel) {
@@ -62,12 +69,11 @@ export class DailyPicturesListComponent implements OnInit {
     console.log('in onSubmit: ', form.valid);
     this.selectedYear = this.FormSettings.year;
     this.selectedMonth = this.FormSettings.month;
-    this.service.getPicturesMonth(this.selectedYear,this.selectedMonth)
     this.keywordValue = this.FormSettings.keyword;
-    this.PicturesOfDay = this.service.getPicturesList()
-    console.log('Pictures of the day: ', this.PicturesOfDay)
-    console.log ("Search in title: ", this.FormSettings.searchInTitle)
-    console.log ("Search in explanation: ", this.FormSettings.searchInExplanation)
-    console.log(this.keywordValue)
+    this.newDates = this.service.getPicturesMonth(this.selectedYear,this.selectedMonth)
+   // this.PicturesOfDay = this.service.getPicturesList(this.newDates)
+   this.$picturesOfDay = this.service.getPicturesList(this.newDates);
+   this.dateList = this.newDates
+
   }
 }

@@ -1,7 +1,7 @@
 export interface searchFormSettings {
     keyword: string,
-    year: string,
-    month: string,
+    year: number,
+    month: number,
     searchInTitle: boolean,
     searchInExplanation: boolean
   //  planetsName: string
