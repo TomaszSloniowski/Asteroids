@@ -4,6 +4,7 @@ import { searchFormSettings } from '../searchform-settings';
 import { NgForm, NgModel } from '@angular/forms';
 import { IPicture } from '../picture';
 import { Observable } from 'rxjs';
+import { SessionStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-daily-pictures-list',
@@ -13,10 +14,9 @@ import { Observable } from 'rxjs';
 export class DailyPicturesListComponent implements OnInit {
 
   pictureOfDay: IPicture[];
- // PicturesOfDay: IPicture[] = [];
   $picturesOfDay: Observable<IPicture[]>
 
-  keywordValue: string = 'keyword';
+  keywordValue: string = '';
   selectedMonth: number;
   selectedYear: number;
   checkboxListValues = [];
@@ -24,56 +24,58 @@ export class DailyPicturesListComponent implements OnInit {
   dateList = [];
   newDates = [];
 
-    /*-------- Search form --------*/
-    originalSearchFormSettings : searchFormSettings = {
-      keyword: 'keyword',
-      year: 2019,
-      month: 9,
-      searchInTitle: true,
-      searchInExplanation: true
+  /*-------- Search form --------*/
+  originalSearchFormSettings: searchFormSettings = {
+    keyword: '',
+    year: null,
+    month: null,
+    searchInTitle: true,
+    searchInExplanation: true
 
-  //  planetsName: null,
-  //  date: null
   };
-  
-  FormSettings : searchFormSettings = { ...this.originalSearchFormSettings };
 
-    /*--------- Planets menu --------*/
-    checkboxList = {
-      Mercury: false,
-      Venus: false,
-      Earth: true,
-      Mars: false,
-      Jupiter: false,
-      Saturn: false,
-      Uran: false,
-      Neptun: false,
-      Pluton: false,
-      Sun: false,
-      Moon: false,
-    };
+  FormSettings: searchFormSettings = { ...this.originalSearchFormSettings };
 
-    constructor(private service: DailyPicturesService) { }
+  /*--------- Planets menu --------*/
+  checkboxList = {
+    Mercury: false,
+    Venus: false,
+    Earth: true,
+    Mars: false,
+    Jupiter: false,
+    Saturn: false,
+    Uran: false,
+    Neptun: false,
+    Pluton: false,
+    Sun: false,
+    Moon: false,
+  };
+
+  constructor(private service: DailyPicturesService,
+    public session: SessionStorageService
+  ) { }
 
   ngOnInit() {
-  // this.dateList = this.service.getCurrentMonthPictures()
-  // this.PicturesOfDay = this.service.getPicturesList(this.dateList);
-   this.$picturesOfDay = this.service.getPicturesList(this.dateList);
+    this.FormSettings.year = this.session.get('year');
+    this.FormSettings.month = this.session.get('month');
+    this.dateList = this.service.getPicturesMonth(this.FormSettings.year, this.FormSettings.month)
+    this.$picturesOfDay = this.service.getPicturesList(this.dateList);
   }
 
-  onBlur(field : NgModel) {
+  onBlur(field: NgModel) {
     console.log('in onBlur: ', field.valid);
   }
-  
+
   onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.valid);
     this.selectedYear = this.FormSettings.year;
     this.selectedMonth = this.FormSettings.month;
     this.keywordValue = this.FormSettings.keyword;
-    this.newDates = this.service.getPicturesMonth(this.selectedYear,this.selectedMonth)
-   // this.PicturesOfDay = this.service.getPicturesList(this.newDates)
-   this.$picturesOfDay = this.service.getPicturesList(this.newDates);
-   this.dateList = this.newDates
+    this.newDates = this.service.getPicturesMonth(this.selectedYear, this.selectedMonth)
+    this.$picturesOfDay = this.service.getPicturesList(this.newDates);
+    this.dateList = this.newDates
+    this.session.set('year', this.selectedYear);
+    this.session.set('month', this.selectedMonth);
 
   }
 }

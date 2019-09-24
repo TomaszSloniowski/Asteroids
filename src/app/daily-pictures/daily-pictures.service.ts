@@ -43,7 +43,7 @@ export class DailyPicturesService {
     };
     return dateList
   }; 
-
+/*
   getCurrentMonthPictures() {
     var current_datetime = new Date()
     var m = current_datetime.getMonth() + 1, d = current_datetime.getDate();
@@ -63,7 +63,7 @@ export class DailyPicturesService {
       dateMove.setDate(dateMove.getDate() + 1);
     };
     return dateList
-  };
+  };*/
 
 
   getPicturesList(dateList) : Observable<IPicture[]> {

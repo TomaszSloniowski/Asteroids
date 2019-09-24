@@ -4,7 +4,5 @@ export interface searchFormSettings {
     month: number,
     searchInTitle: boolean,
     searchInExplanation: boolean
-  //  planetsName: string
-  //  date: string
     }
 

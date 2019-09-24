@@ -5,6 +5,7 @@ import { DailyPicturesListComponent } from './daily-pictures-list/daily-pictures
 import { DailyPictureDetailsComponent } from './daily-picture-details/daily-picture-details.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularWebStorageModule } from 'angular-web-storage';
 
 @NgModule({
   declarations: [DailyPicturesListComponent, DailyPictureDetailsComponent],
@@ -13,7 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AngularWebStorageModule
   ],
   exports:
   [DailyPicturesListComponent, DailyPictureDetailsComponent]

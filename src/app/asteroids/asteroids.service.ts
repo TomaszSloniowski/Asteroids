@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AsteroidsService  {
+export class AsteroidsService {
 
 
   private AsteroidsUrl = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-07-18&end_date=2019-07-18&api_key=zd6kRT5AcbM5cDS6Gwb71YdfgYTXVXn5oyJGwEHp'

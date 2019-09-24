@@ -118,18 +118,18 @@
  <div *ngFor="let pictureOfDay of $picturesOfDay | async">
 
  <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(keywordValue)) || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(keywordValue))
- || checkboxList.Earth == true && pictureOfDay.title.match('Earth')
- || checkboxList.Sun == true && pictureOfDay.title.match('Sun')
- || checkboxList.Moon == true && pictureOfDay.title.match('Moon')
- || checkboxList.Mercury == true && pictureOfDay.title.match('Mercury')
- || checkboxList.Venus == true && pictureOfDay.title.match('Venus')
- || checkboxList.Mars == true && pictureOfDay.title.match('Mars')
- || checkboxList.Jupiter == true && pictureOfDay.title.match('Jupiter')
- || checkboxList.Saturn == true && pictureOfDay.title.match('Saturn')
- || checkboxList.Uran == true && pictureOfDay.title.match('Uran')
- || checkboxList.Neptun == true && pictureOfDay.title.match('Neptun')
- || checkboxList.Pluton == true && pictureOfDay.title.match('Pluton')
- || keywordValue == 'keyword'"
+ || (checkboxList.Earth == true && pictureOfDay.title.match('Earth'))
+ || (checkboxList.Sun == true && pictureOfDay.title.match('Sun'))
+ || (checkboxList.Moon == true && pictureOfDay.title.match('Moon'))
+ || (checkboxList.Mercury == true && pictureOfDay.title.match('Mercury'))
+ || (checkboxList.Venus == true && pictureOfDay.title.match('Venus'))
+ || (checkboxList.Mars == true && pictureOfDay.title.match('Mars'))
+ || (checkboxList.Jupiter == true && pictureOfDay.title.match('Jupiter'))
+ || (checkboxList.Saturn == true && pictureOfDay.title.match('Saturn'))
+ || (checkboxList.Uran == true && pictureOfDay.title.match('Uran'))
+ || (checkboxList.Neptun == true && pictureOfDay.title.match('Neptun'))
+ || (checkboxList.Pluton == true && pictureOfDay.title.match('Pluton'))
+"
  class="">
 
       <a [routerLink]="['../daily-picture-details', pictureOfDay.date]" routerLinkActive="active"
