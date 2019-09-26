@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { of } from 'rxjs';
-
-// import { catchError, tap } from 'rxjs/operators';
-
 import { IPicture } from './picture';
-
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +62,7 @@ export class DailyPicturesService {
   };*/
 
 
-  getPicturesList(dateList) : Observable<IPicture[]> {
+  getPicturesList(dateList): Observable<IPicture[]> {
     this.picturesList = [];
     let x;
     for (let i = 0; i <= dateList.length; i++) {
@@ -77,7 +73,6 @@ export class DailyPicturesService {
       this.http.get<IPicture[]>(this.PictureOfDayUrl, { params: x }).subscribe(
         dailypicture => {
           this.dailypicture = dailypicture;
-          // console.log('Pictures of the day: ', this.dailypicture)
           this.picturesList.push(this.dailypicture);
         });
     }
@@ -87,7 +82,7 @@ export class DailyPicturesService {
   }
 
 
-  getPicture(pictureDate: string): Observable<IPicture[]> {
+  getPicture(pictureDate: string): Observable<IPicture> {
     let x = { date: pictureDate }
     return this.http.get<any>(this.PictureOfDayUrl, { params: x })
   }

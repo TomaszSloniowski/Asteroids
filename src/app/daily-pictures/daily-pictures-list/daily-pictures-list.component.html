@@ -30,32 +30,11 @@
       <option value="12">12</option>
     </select>
 
-    <!--
-    <div class="form-group">
-      <div class="keyword-select">
-        <input id="keyword" name="keyword" placeholder="Enter a keyword" class="form-control"
-           required minlength="3"
-           (ngModel)]="FormSettings.keyword" required #keywordField="ngModel" (blur)="onBlur(keywordField)">
-       
-           <div *ngIf="keyword.invalid && (keyword.dirty || keyword.touched)"
-           class="alert alert-danger">
-       
-         <div *ngIf="keyword.errors.required">
-           Name is required.
-         </div>
-         <div *ngIf="keyword.errors.minlength">
-           Name must be at least 4 characters long.
-         </div>
-      </div>
-    </div>
-  </div>
--->
 
     <div class="form-group">
       <input type="text" class="form-control" id="keyword" placeholder="Enter a keyword" required
         [(ngModel)]="FormSettings.keyword" name="keyword" #name="ngModel">
     </div>
-
 
     <div class="custom-checkbox-container">
       <div class="custom-control custom-checkbox">
@@ -115,20 +94,20 @@
 <div class="images-list">
 <table class="table table-hover">
 
- <div *ngFor="let pictureOfDay of $picturesOfDay | async">
+ <div *ngFor="let pictureOfDay of $picturesOfDay | async ">
 
  <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(keywordValue)) || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(keywordValue))
- || (checkboxList.Earth == true && pictureOfDay.title.match('Earth'))
- || (checkboxList.Sun == true && pictureOfDay.title.match('Sun'))
- || (checkboxList.Moon == true && pictureOfDay.title.match('Moon'))
- || (checkboxList.Mercury == true && pictureOfDay.title.match('Mercury'))
- || (checkboxList.Venus == true && pictureOfDay.title.match('Venus'))
- || (checkboxList.Mars == true && pictureOfDay.title.match('Mars'))
- || (checkboxList.Jupiter == true && pictureOfDay.title.match('Jupiter'))
- || (checkboxList.Saturn == true && pictureOfDay.title.match('Saturn'))
- || (checkboxList.Uran == true && pictureOfDay.title.match('Uran'))
- || (checkboxList.Neptun == true && pictureOfDay.title.match('Neptun'))
- || (checkboxList.Pluton == true && pictureOfDay.title.match('Pluton'))
+ || checkboxList.Earth == true && pictureOfDay.title.match('Earth')
+ || checkboxList.Sun == true && pictureOfDay.title.match('Sun')
+ || checkboxList.Moon == true && pictureOfDay.title.match('Moon')
+ || checkboxList.Mercury == true && pictureOfDay.title.match('Mercury')
+ || checkboxList.Venus == true && pictureOfDay.title.match('Venus')
+ || checkboxList.Mars == true && pictureOfDay.title.match('Mars')
+ || checkboxList.Jupiter == true && pictureOfDay.title.match('Jupiter')
+ || checkboxList.Saturn == true && pictureOfDay.title.match('Saturn')
+ || checkboxList.Uran == true && pictureOfDay.title.match('Uran')
+ || checkboxList.Neptun == true && pictureOfDay.title.match('Neptun')
+ || checkboxList.Pluton == true && pictureOfDay.title.match('Pluton')
 "
  class="">
 
@@ -146,15 +125,3 @@
 
 </table>
 </div>
-
- <!-- || checkboxList.Earth == true && pictureOfDay.title.match('Earth')
-      || checkboxList.Sun == true && pictureOfDay.title.match('Sun')
-      || checkboxList.Moon == true && pictureOfDay.title.match('Moon')
-      || checkboxList.Mercury == true && pictureOfDay.title.match('Mercury')
-      || checkboxList.Venus == true && pictureOfDay.title.match('Venus')
-      || checkboxList.Mars == true && pictureOfDay.title.match('Mars')
-      || checkboxList.Jupiter == true && pictureOfDay.title.match('Jupiter')
-      || checkboxList.Saturn == true && pictureOfDay.title.match('Saturn')
-      || checkboxList.Uran == true && pictureOfDay.title.match('Uran')
-      || checkboxList.Neptun == true && pictureOfDay.title.match('Neptun')
-      || checkboxList.Pluton == true && pictureOfDay.title.match('Pluton')"--> 

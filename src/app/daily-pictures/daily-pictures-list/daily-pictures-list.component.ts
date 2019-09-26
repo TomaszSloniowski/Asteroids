@@ -13,9 +13,9 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class DailyPicturesListComponent implements OnInit {
 
-  pictureOfDay: IPicture[];
+  pictureOfDay: IPicture;
   $picturesOfDay: Observable<IPicture[]>
-
+  // picturesOfDay: IPicture[];
   keywordValue: string = '';
   selectedMonth: number;
   selectedYear: number;
@@ -31,7 +31,6 @@ export class DailyPicturesListComponent implements OnInit {
     month: null,
     searchInTitle: true,
     searchInExplanation: true
-
   };
 
   FormSettings: searchFormSettings = { ...this.originalSearchFormSettings };
@@ -40,7 +39,7 @@ export class DailyPicturesListComponent implements OnInit {
   checkboxList = {
     Mercury: false,
     Venus: false,
-    Earth: true,
+    Earth: false,
     Mars: false,
     Jupiter: false,
     Saturn: false,
@@ -58,7 +57,8 @@ export class DailyPicturesListComponent implements OnInit {
   ngOnInit() {
     this.FormSettings.year = this.session.get('year');
     this.FormSettings.month = this.session.get('month');
-    this.dateList = this.service.getPicturesMonth(this.FormSettings.year, this.FormSettings.month)
+    this.FormSettings.keyword = this.session.get('keyword');
+    this.dateList = JSON.parse(this.session.get('dates'));
     this.$picturesOfDay = this.service.getPicturesList(this.dateList);
   }
 
@@ -76,6 +76,7 @@ export class DailyPicturesListComponent implements OnInit {
     this.dateList = this.newDates
     this.session.set('year', this.selectedYear);
     this.session.set('month', this.selectedMonth);
-
+    this.session.set('dates', JSON.stringify(this.dateList));
+    this.session.set('keyword', this.keywordValue);
   }
 }
