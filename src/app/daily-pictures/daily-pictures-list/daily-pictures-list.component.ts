@@ -23,6 +23,7 @@ export class DailyPicturesListComponent implements OnInit {
   errorMessage: string;
   dateList = [];
   newDates = [];
+  user: string = '';
 
   /*-------- Search form --------*/
   originalSearchFormSettings: searchFormSettings = {
@@ -60,6 +61,7 @@ export class DailyPicturesListComponent implements OnInit {
     this.FormSettings.keyword = this.session.get('keyword');
     this.dateList = JSON.parse(this.session.get('dates'));
     this.$picturesOfDay = this.service.getPicturesList(this.dateList);
+
   }
 
   onBlur(field: NgModel) {

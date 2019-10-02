@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MustMatch }  from '../user/must-match.validator';
+import { MustMatch }  from './must-match.validator';
 //import { debounceTime } from 'rxjs/operators';
-  
+import { SessionStorageService } from 'angular-web-storage';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,9 @@ export class UserComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    public session: SessionStorageService,
+    private us: UserService) { }
 
   ngOnInit() {
       this.registerForm = this.formBuilder.group({
@@ -27,7 +30,7 @@ export class UserComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
-
+ 
   onSubmit() {
       this.submitted = true;
 
@@ -35,7 +38,9 @@ export class UserComponent implements OnInit {
       if (this.registerForm.invalid) {
           return;
       }
+      this.us.logIn(this.registerForm.value.email);
 
-      console.log('Register :-)\n\n' + JSON.stringify(this.registerForm.value))
+     // this.session.set('email', this.registerForm.value.email)
+     // console.log('Register :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 }

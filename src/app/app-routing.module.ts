@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'daily-pictures', pathMatch: 'full' },
   { path: 'daily-picture-details/:date', component: DailyPictureDetailsComponent },
   { path: 'asteroids', loadChildren: () => import('./asteroids/asteroids.module').then(m => m.AsteroidsModule) },
-  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
+  { path: 'user', loadChildren: () => import('./core/user/user.module').then(m => m.UserModule) },
   { path: '**', redirectTo: 'daily-pictures' }
 ];
 
