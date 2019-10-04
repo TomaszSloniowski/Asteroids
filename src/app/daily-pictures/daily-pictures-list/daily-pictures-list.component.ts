@@ -16,7 +16,7 @@ export class DailyPicturesListComponent implements OnInit {
   pictureOfDay: IPicture;
   $picturesOfDay: Observable<IPicture[]>
   // picturesOfDay: IPicture[];
-  keywordValue: string = '';
+  keywordValue: string = null;
   selectedMonth: number;
   selectedYear: number;
   checkboxListValues = [];
@@ -26,15 +26,18 @@ export class DailyPicturesListComponent implements OnInit {
   user: string = '';
 
   /*-------- Search form --------*/
-  originalSearchFormSettings: searchFormSettings = {
-    keyword: '',
-    year: null,
+    FormSettings: searchFormSettings = {
+    keyword: null,
+    year: 2019,
     month: null,
     searchInTitle: true,
     searchInExplanation: true
-  };
+  }; 
 
-  FormSettings: searchFormSettings = { ...this.originalSearchFormSettings };
+/*
+  FormSettings: searchFormSettings;   */
+
+  /*= { ...this.originalSearchFormSettings }; */
 
   /*--------- Planets menu --------*/
   checkboxList = {
@@ -61,7 +64,6 @@ export class DailyPicturesListComponent implements OnInit {
     this.FormSettings.keyword = this.session.get('keyword');
     this.dateList = JSON.parse(this.session.get('dates'));
     this.$picturesOfDay = this.service.getPicturesList(this.dateList);
-
   }
 
   onBlur(field: NgModel) {

@@ -11,8 +11,9 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class NavComponent implements OnInit {
 
-  loggedIn: boolean;
+  loggedIn: boolean = false;
   user: string = '';
+  SignOutItem: boolean;
 
   constructor(
     //private route: ActivatedRoute,
@@ -21,9 +22,12 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.us.isLoggedIn().subscribe(loggedIn => {
+    this.us.isLoggedIn().subscribe((loggedIn) => {
       this.loggedIn = loggedIn;
+      console.log('LoggedIn:' , this.loggedIn);
       this.user = this.session.get('email');
+      this.SignOutItem = loggedIn;
+      console.log('SignOut:' , this.SignOutItem);
       console.log('user: ', this.user);
     });
   }

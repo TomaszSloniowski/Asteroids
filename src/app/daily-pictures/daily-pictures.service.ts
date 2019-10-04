@@ -63,7 +63,7 @@ export class DailyPicturesService {
 
 
   getPicturesList(dateList): Observable<IPicture[]> {
-    this.picturesList = [];
+   // this.picturesList = [];
     let x;
     for (let i = 0; i <= dateList.length; i++) {
       x = {

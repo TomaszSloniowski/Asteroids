@@ -1,7 +1,11 @@
+$black: black;
+
+$font_0: sans-serif;
+
 .picture-details-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0px;
+  margin: 0;
   padding: 20px;
 }
 
@@ -13,11 +17,9 @@
   max-height: 500px;
   width: auto;
   height: auto;
-  margin: 0px;
-  padding: 20px
+  margin: 0;
+  padding: 20px;
 }
-
-/*------- picture details -------------*/
 
 .picture-description {
   display: flex;
@@ -30,12 +32,12 @@
 }
 
 .picture-explanation {
-    display: flex;
-    justify-items: start;
-    font-size: 0.9rem;
-    padding-bottom: 20px;
-    letter-spacing: 0.03em
-  }
+  display: flex;
+  justify-items: start;
+  font-size: 0.9rem;
+  padding-bottom: 20px;
+  letter-spacing: 0.03em;
+}
 
 .picture-header {
   padding-top: 20px;
@@ -43,50 +45,8 @@
   font-size: 1.2rem;
   font-weight: 600px;
   text-align: left;
-  letter-spacing: 0.03em
+  letter-spacing: 0.03em;
 }
-
-p.picture__footer {
-  margin: 0px;
-  padding: 2px;
-  font-size: 0.75rem;
-  color: black;
-  font-weight: 400;
-  letter-spacing: 0.03em
-}
-
-/*
-.event__description__city {
-  padding-top: 5px;
-  padding-bottom: 20px;
-  font-size: 0.8rem;
-  font-weight: 200px;
-}
-
-.event__description__pointer {
-  display: none;
-  font-size: 0.9rem;
-  padding-bottom: 15px;
-}
-
-.event__description__footer__location {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 0px;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-
-
-.picture__url {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  padding-left: 0px;
-  font-size: 0.7rem;
-  font-weight: 200;
-  color: black;
-}*/
 
 .bottom__nav {
   display: flex;
@@ -96,13 +56,22 @@ p.picture__footer {
 }
 
 .bottom__nav__item {
-  font-family: Roboto, Helvetica Neue, sans-serif;
+  font-family: $font_0;
   font-size: 0.9rem;
   font-weight: 100;
   cursor: pointer;
 }
+
 .bottom__nav__icon {
   padding-right: 10px;
   font-size: 0.9rem;
+}
 
+p.picture__footer {
+  margin: 0;
+  padding: 2px;
+  font-size: 0.75rem;
+  color: $black;
+  font-weight: 400;
+  letter-spacing: 0.03em;
 }
