@@ -5,7 +5,7 @@ $font_0: sans-serif;
 %extend_1 {
   min-width: 150px;
   max-width: 150px;
-  margin: 20px;
+  //margin: 20px;
 }
 
 p {
@@ -32,8 +32,8 @@ img {
 
 .checkbox-list-container {
   display: flex;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .list-container {
@@ -44,7 +44,14 @@ img {
   margin: 0;
 }
 
+.custom-checkbox-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+}
 .form-group {
+  display: flex;
+  flex-direction: column;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
@@ -55,11 +62,7 @@ img {
   @extend %extend_1;
 }
 
-.custom-checkbox-container {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-}
+
 
 select.custom-select {
   @extend %extend_1;

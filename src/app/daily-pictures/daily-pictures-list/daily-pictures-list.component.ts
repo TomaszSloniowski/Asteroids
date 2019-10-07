@@ -13,10 +13,22 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class DailyPicturesListComponent implements OnInit {
 
+
+  /*-------- Search form --------*/
+  originalFormSettings: searchFormSettings = {
+    keyword: '  ',
+    year: 2019,
+    month: 10,
+    searchInTitle: true,
+    searchInExplanation: true
+  };
+
+  FormSettings: searchFormSettings = { ...this.originalFormSettings };
+
   pictureOfDay: IPicture;
   $picturesOfDay: Observable<IPicture[]>
   // picturesOfDay: IPicture[];
-  keywordValue: string = null;
+  keywordValue: string;
   selectedMonth: number;
   selectedYear: number;
   checkboxListValues = [];
@@ -25,19 +37,8 @@ export class DailyPicturesListComponent implements OnInit {
   newDates = [];
   user: string = '';
 
-  /*-------- Search form --------*/
-    FormSettings: searchFormSettings = {
-    keyword: null,
-    year: 2019,
-    month: null,
-    searchInTitle: true,
-    searchInExplanation: true
-  }; 
 
-/*
-  FormSettings: searchFormSettings;   */
-
-  /*= { ...this.originalSearchFormSettings }; */
+  //years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
 
   /*--------- Planets menu --------*/
   checkboxList = {
@@ -56,7 +57,11 @@ export class DailyPicturesListComponent implements OnInit {
 
   constructor(private service: DailyPicturesService,
     public session: SessionStorageService
-  ) { }
+  ) {
+    this.session.set('year', 2019);
+    this.session.set('month', 10);
+    this.session.set('keyword', '  ');
+  }
 
   ngOnInit() {
     this.FormSettings.year = this.session.get('year');
@@ -67,7 +72,7 @@ export class DailyPicturesListComponent implements OnInit {
   }
 
   onBlur(field: NgModel) {
-    console.log('in onBlur: ', field.valid);
+    console.log('in onBlur: ', field.valid); 
   }
 
   onSubmit(form: NgForm) {

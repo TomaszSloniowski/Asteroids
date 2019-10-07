@@ -3,6 +3,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { of } from 'rxjs';
 import { IPicture } from './picture';
+import { SessionStorageService } from 'angular-web-storage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,9 @@ export class DailyPicturesService {
   pictureDate: string;
   dailypicture: IPicture[];
 
-  constructor(private http: HttpClient
+  constructor(
+    private http: HttpClient,
+    public session: SessionStorageService
   ) { }
 
   getPicturesMonth(year: number, month: number) {
@@ -63,7 +67,9 @@ export class DailyPicturesService {
 
 
   getPicturesList(dateList): Observable<IPicture[]> {
-   // this.picturesList = [];
+   if (this.session.get('startDate') !== dateList[0]) {
+    this.picturesList = [];
+
     let x;
     for (let i = 0; i <= dateList.length; i++) {
       x = {
@@ -76,8 +82,13 @@ export class DailyPicturesService {
           this.picturesList.push(this.dailypicture);
         });
     }
+    this.session.set('startDate', dateList[0]);
     //return this.picturesList
     return of(this.picturesList);
+  }
+  else {
+    return of(this.picturesList);
+  }
 
   }
 
