@@ -5,7 +5,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { IPicture } from '../picture';
 import { Observable } from 'rxjs';
 import { SessionStorageService } from 'angular-web-storage';
-import { ActivatedRoute } from '@angular/router';
+//import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,8 +20,8 @@ export class DailyPicturesListComponent implements OnInit {
   /*-------- Search form --------*/
  originalFormSettings: searchFormSettings = {
     keyword: '',
-    year: 2019,
-    month: 10,
+    year: null,
+    month: null,
     searchInTitle: true,
     searchInExplanation: true
   };
@@ -57,19 +57,21 @@ export class DailyPicturesListComponent implements OnInit {
 
   constructor(private service: DailyPicturesService,
     public session: SessionStorageService,
-    private route: ActivatedRoute
+   // private route: ActivatedRoute
   ) {
-  /* this.session.set('year', 2019);
-   this.session.set('month', 10);
-   this.session.set('keyword', '');
-   this.session.set('searchInTitle', true);
-   this.session.set('searchInExplanation', true) */
+  // this.session.set('year', 2019);
+  // this.session.set('month', 10);
+  // this.session.set('keyword', '');
+  // this.session.set('searchInTitle', true);
+  // this.session.set('searchInExplanation', true)
   }
 
   ngOnInit() {
     this.FormSettings.year = this.session.get('year');
     this.FormSettings.month = this.session.get('month');
     //this.FormSettings.keyword = this.session.get('keyword');
+    this.FormSettings.searchInTitle = this.session.get('searchInTitle');
+    this.FormSettings.searchInExplanation = this.session.get('searchInExplanation');
     this.dateList = JSON.parse(this.session.get('dates'));
     this.$picturesOfDay = this.service.getPicturesList(this.dateList);
   }

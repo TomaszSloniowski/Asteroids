@@ -18,6 +18,7 @@ export class DailyPicturesService {
   picture: any;
   pictureDate: string;
   dailypicture: IPicture[];
+  dt = new Date;
 
   constructor(
     private http: HttpClient,
@@ -25,8 +26,15 @@ export class DailyPicturesService {
   ) { }
 
   getPicturesMonth(year: number, month: number) {
-    var m = month, y = year
-    var endDate = y + '-' + (m < 10 ? '0' + m : m) + '-' + "31";
+    var m = month, y = year;
+    if (m == this.dt.getMonth()+1) {
+      var daysInMonth = this.dt.getDate()
+      console.log("October: ", this.dt.getDate())
+    } else {
+      var daysInMonth = new Date(year, month, 0).getDate();
+    }
+    console.log("Days in month ", daysInMonth )
+    var endDate = y + '-' + (m < 10 ? '0' + m : m) + '-' + daysInMonth;
     var startDate = y + '-' + (m < 10 ? '0' + m : m) + '-' + '01';
 
     console.log('start date: ', startDate);
@@ -43,27 +51,6 @@ export class DailyPicturesService {
     };
     return dateList
   }; 
-/*
-  getCurrentMonthPictures() {
-    var current_datetime = new Date()
-    var m = current_datetime.getMonth() + 1, d = current_datetime.getDate();
-    var endDate = current_datetime.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d);
-    var startDate = current_datetime.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + '01';
-
-    console.log('start date: ', startDate);
-    console.log('end date: ', endDate)
-
-    var dateList = [];
-    var dateMove = new Date(startDate);
-    var strDate = startDate;
-
-    while (strDate < endDate) {
-      var strDate = dateMove.toISOString().slice(0, 10);
-      dateList.push(strDate);
-      dateMove.setDate(dateMove.getDate() + 1);
-    };
-    return dateList
-  };*/
 
 
   getPicturesList(dateList): Observable<IPicture[]> {
