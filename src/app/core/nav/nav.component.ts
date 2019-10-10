@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { SessionStorageService } from 'angular-web-storage';
 
@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
   SignOutItem: boolean;
 
   constructor(
-    //private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private us: UserService,
     public session: SessionStorageService
   ) { }
@@ -30,6 +30,10 @@ export class NavComponent implements OnInit {
       console.log('SignOut:' , this.SignOutItem);
       console.log('user: ', this.user);
     });
+  }
+
+  signOut() {
+    this.us.logOut();
   }
 
 }

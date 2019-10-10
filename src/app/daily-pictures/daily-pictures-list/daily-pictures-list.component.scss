@@ -47,8 +47,10 @@ img {
 .custom-checkbox-container {
   display: flex;
   flex-direction: column;
-  padding-top: 25px;
+  padding-top: 45px;
+  padding-left: 20px;
 }
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -71,6 +73,7 @@ select.custom-select {
 .button-search {
   display: flex;
   margin-left: 50px;
+  margin-top: 25px;
   align-items: center;
   justify-items: flex-end;
 }
@@ -124,5 +127,3 @@ a.images-list__link {
   margin: 0;
   color: $black;
 }
-
-

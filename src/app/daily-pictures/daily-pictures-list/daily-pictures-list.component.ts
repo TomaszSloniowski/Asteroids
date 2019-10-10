@@ -5,6 +5,8 @@ import { NgForm, NgModel } from '@angular/forms';
 import { IPicture } from '../picture';
 import { Observable } from 'rxjs';
 import { SessionStorageService } from 'angular-web-storage';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-daily-pictures-list',
@@ -13,17 +15,18 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class DailyPicturesListComponent implements OnInit {
 
+  
 
   /*-------- Search form --------*/
-  originalFormSettings: searchFormSettings = {
-    keyword: '  ',
+ originalFormSettings: searchFormSettings = {
+    keyword: '',
     year: 2019,
     month: 10,
     searchInTitle: true,
     searchInExplanation: true
   };
 
-  FormSettings: searchFormSettings = { ...this.originalFormSettings };
+  FormSettings: searchFormSettings = { ...this.originalFormSettings };  
 
   pictureOfDay: IPicture;
   $picturesOfDay: Observable<IPicture[]>
@@ -35,10 +38,7 @@ export class DailyPicturesListComponent implements OnInit {
   errorMessage: string;
   dateList = [];
   newDates = [];
-  user: string = '';
 
-
-  //years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019];
 
   /*--------- Planets menu --------*/
   checkboxList = {
@@ -56,23 +56,26 @@ export class DailyPicturesListComponent implements OnInit {
   };
 
   constructor(private service: DailyPicturesService,
-    public session: SessionStorageService
+    public session: SessionStorageService,
+    private route: ActivatedRoute
   ) {
-    this.session.set('year', 2019);
-    this.session.set('month', 10);
-    this.session.set('keyword', '  ');
+  /* this.session.set('year', 2019);
+   this.session.set('month', 10);
+   this.session.set('keyword', '');
+   this.session.set('searchInTitle', true);
+   this.session.set('searchInExplanation', true) */
   }
 
   ngOnInit() {
     this.FormSettings.year = this.session.get('year');
     this.FormSettings.month = this.session.get('month');
-    this.FormSettings.keyword = this.session.get('keyword');
+    //this.FormSettings.keyword = this.session.get('keyword');
     this.dateList = JSON.parse(this.session.get('dates'));
     this.$picturesOfDay = this.service.getPicturesList(this.dateList);
   }
 
   onBlur(field: NgModel) {
-    console.log('in onBlur: ', field.valid); 
+    console.log('in onBlur: ', field.valid);
   }
 
   onSubmit(form: NgForm) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch }  from './must-match.validator';
 //import { debounceTime } from 'rxjs/operators';
@@ -16,7 +17,9 @@ export class UserComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     public session: SessionStorageService,
-    private us: UserService) { }
+    private us: UserService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
       this.registerForm = this.formBuilder.group({
@@ -39,7 +42,7 @@ export class UserComponent implements OnInit {
           return;
       }
       this.us.logIn(this.registerForm.value.email);
-
+      this.router.navigate(['../daily-pictures']);
      // this.session.set('email', this.registerForm.value.email)
      // console.log('Register :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
