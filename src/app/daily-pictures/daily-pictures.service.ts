@@ -18,7 +18,7 @@ export class DailyPicturesService {
   picture: any;
   pictureDate: string;
   dailypicture: IPicture[];
-  dt = new Date;
+  dt = new Date();
 
   constructor(
     private http: HttpClient,
@@ -26,8 +26,9 @@ export class DailyPicturesService {
   ) { }
 
   getPicturesMonth(year: number, month: number) {
+    console.log (this.dt)
     var m = month, y = year;
-    if (m == this.dt.getMonth()+1) {
+    if (m == this.dt.getMonth()+1  && (y == this.dt.getFullYear())) {
       var daysInMonth = this.dt.getDate()
       console.log("October: ", this.dt.getDate())
     } else {

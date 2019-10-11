@@ -15,18 +15,15 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class DailyPicturesListComponent implements OnInit {
 
-  
 
   /*-------- Search form --------*/
- originalFormSettings: searchFormSettings = {
+ FormSettings: searchFormSettings = {
     keyword: '',
-    year: null,
-    month: null,
+    year: 2019,
+    month: 10,
     searchInTitle: true,
     searchInExplanation: true
   };
-
-  FormSettings: searchFormSettings = { ...this.originalFormSettings };  
 
   pictureOfDay: IPicture;
   $picturesOfDay: Observable<IPicture[]>
@@ -41,7 +38,7 @@ export class DailyPicturesListComponent implements OnInit {
 
 
   /*--------- Planets menu --------*/
-  checkboxList = {
+  /*checkboxList = {
     Mercury: false,
     Venus: false,
     Earth: false,
@@ -53,14 +50,14 @@ export class DailyPicturesListComponent implements OnInit {
     Pluton: false,
     Sun: false,
     Moon: false,
-  };
+  }; */
 
   constructor(private service: DailyPicturesService,
     public session: SessionStorageService,
    // private route: ActivatedRoute
   ) {
   // this.session.set('year', 2019);
-  // this.session.set('month', 10);
+  //  this.session.set('month', 10);
   // this.session.set('keyword', '');
   // this.session.set('searchInTitle', true);
   // this.session.set('searchInExplanation', true)
@@ -69,9 +66,9 @@ export class DailyPicturesListComponent implements OnInit {
   ngOnInit() {
     this.FormSettings.year = this.session.get('year');
     this.FormSettings.month = this.session.get('month');
-    //this.FormSettings.keyword = this.session.get('keyword');
-    this.FormSettings.searchInTitle = this.session.get('searchInTitle');
-    this.FormSettings.searchInExplanation = this.session.get('searchInExplanation');
+  // this.FormSettings.keyword = this.session.get('keyword');
+   // this.FormSettings.searchInTitle = this.session.get('searchInTitle');
+   // this.FormSettings.searchInExplanation = this.session.get('searchInExplanation');
     this.dateList = JSON.parse(this.session.get('dates'));
     this.$picturesOfDay = this.service.getPicturesList(this.dateList);
   }
