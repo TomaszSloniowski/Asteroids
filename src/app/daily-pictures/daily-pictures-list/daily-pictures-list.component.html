@@ -4,40 +4,18 @@
 
 
     <div class="form-group">
-      <label for="formControlSelect1">Select year</label>
-      <select class="form-control custom-select" id="formControlSelect1" name="year" [(ngModel)] ="FormSettings.year">
-        <option value="2019" selected>2019</option>
-        <option value="2018">2018</option>
-        <option value="2017">2017</option>
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-        <option value="2010">2010</option>
+      <label for="year">Select year</label>
+      <select class="form-control custom-select" id="year" [(ngModel)]="FormSettings.year" name="year">
+        <option *ngFor="let yr of years" [value]="yr">{{yr}}</option>
       </select>
     </div>
-
 
     <div class="form-group">
-      <label for="formControlSelect2">Select month</label>
-      <select class="custom-select custom-select" id="formControlSelect2" name="month" [(ngModel)]="FormSettings.month">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10" >10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
+      <label for="month">Select year</label>
+      <select class="form-control custom-select" id="month" [(ngModel)]="FormSettings.month" name="month">
+        <option *ngFor="let mth of months" [value]="mth">{{mth}}</option>
       </select>
     </div>
-
 
     <div class="form-group">
       <label for="keywordSelect1">Keyword</label>
@@ -60,6 +38,7 @@
     <div class="button-search">
       <button class="btn btn-outline-success">Search</button>
     </div>
+    
     <!--
     <div class="btn-group btn-group-toggle checkbox-list-container">
       <label class="btn btn-outline-secondary" ngbButtonLabel>
@@ -111,30 +90,61 @@
   </form>
 </div>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav nav__list">
+      <li class="nav-item nav-link" (click)="getDetailView()"><i class="fas fa-list"></i></li>
+      <!-- <li class="nav-item nav-link" (click)="getThView()"><i class="fas fa-th-list"></i></li>-->
+    </ul>
+  </div>
+</nav>
+
+<!-------------------Daily pictures list----------------------->
+
 <div class="images-list">
   <table class="table table-hover">
-
     <div *ngFor="let pictureOfDay of $picturesOfDay | async ">
-        <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) 
+      <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) 
         || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword)) 
-        || FormSettings.keyword == '' 
+        || FormSettings.keyword == null
         || FormSettings.searchInTitle == false
         || FormSettings.searchInExplanation == false">
-
         <a [routerLink]="['../daily-picture-details', pictureOfDay.date]" routerLinkActive="active"
           class="images-list__link">
-          <!--  <img class="image" src={{pictureOfDay.hdurl}}> -->
           <tbody>
             <tr scope="row">
-              <td class="images-list-item">{{pictureOfDay.title}}</td>
+              <td *ngIf="filterByDetail == true" class="images-list-item">{{pictureOfDay.date}}</td>
+              <td *ngIf="filterByThumbnail == false" class="images-list-item">{{pictureOfDay.title}}</td>
+              <td *ngIf="filterByDetail == true" class="images-list-item">{{pictureOfDay.author}}</td>
+              <td *ngIf="filterByDetail == true" class="images-list-item">{{pictureOfDay.url}}</td>
             </tr>
           </tbody>
         </a>
       </div>
     </div>
-
   </table>
+
 </div>
+
+<!--
+<div class="images-list__thumbnails" >
+    <div *ngFor="let pictureOfDay of $picturesOfDay | async ">
+      <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) 
+        || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword)) 
+        || FormSettings.keyword == ''
+        || FormSettings.searchInTitle == false
+        || FormSettings.searchInExplanation == false">
+        <a [routerLink]="['../daily-picture-details', pictureOfDay.date]" routerLinkActive="active"
+          class="images-list__link">
+          <div class="images__thumbnail" *ngIf="filterByThumbnail == true" >
+            <img class="image" src={{pictureOfDay.url}}>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  -->
+
 
 <!--
         <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword))
