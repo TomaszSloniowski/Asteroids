@@ -22,8 +22,7 @@ import { AppComponent } from './app.component';
     AsteroidsModule,
     DailyPicturesModule,
     UserModule,
-    AngularWebStorageModule
-    
+    AngularWebStorageModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

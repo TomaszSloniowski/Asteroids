@@ -29,7 +29,6 @@ export class DailyPicturesListComponent implements OnInit {
     searchInExplanation: true
   };
 
-
   pictureOfDay: IPicture;
   $picturesOfDay: Observable<IPicture[]>
   keywordValue: string;
