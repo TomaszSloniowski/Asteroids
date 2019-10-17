@@ -30,11 +30,6 @@ img {
   margin: 0;
 }
 
-.checkbox-list-container {
-  display: flex;
-  margin-left: 10px;
-  margin-top: 20px;
-}
 
 .list-container {
   display: flex;
@@ -47,8 +42,9 @@ img {
 .custom-checkbox-container {
   display: flex;
   flex-direction: column;
-  padding-top: 45px;
+  justify-content: center;
   padding-left: 20px;
+  padding-top: 25px;
 }
 
 .form-group {
@@ -86,6 +82,7 @@ select.custom-select {
 .nav__list {
   padding-left: 30px;
   font-size: 1.5rem;
+  min-width: 150px;
 }
 
 .thumbnail {
@@ -137,3 +134,31 @@ a.images-list__link {
 }
 
 
+@media (max-width: 48em) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 0;
+    margin: 0;
+  }
+
+.button-search {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 35px;
+  align-items: center;
+  justify-items: flex-start;
+}
+
+.custom-checkbox-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+  padding-top: 25px;
+  padding-right: 50px;
+}
+
+}

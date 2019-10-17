@@ -1,18 +1,18 @@
 <div class="container">
 
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="input-group searchform-container">
-
-
     <div class="form-group">
       <label for="year">Select year</label>
-      <select class="form-control custom-select" id="year" [(ngModel)]="FormSettings.year" name="year">
+      <select class="form-control custom-select" id="year" required [(ngModel)]="FormSettings.year" name="year"
+        #name="ngModel">
         <option *ngFor="let yr of years" [value]="yr">{{yr}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="month">Select year</label>
-      <select class="form-control custom-select" id="month" [(ngModel)]="FormSettings.month" name="month">
+      <label for="month">Select month</label>
+      <select class="form-control custom-select" id="month" required [(ngModel)]="FormSettings.month" name="month"
+      #name="ngModel">
         <option *ngFor="let mth of months" [value]="mth">{{mth}}</option>
       </select>
     </div>
@@ -38,7 +38,7 @@
     <div class="button-search">
       <button class="btn btn-outline-success">Search</button>
     </div>
-    
+
     <!--
     <div class="btn-group btn-group-toggle checkbox-list-container">
       <label class="btn btn-outline-secondary" ngbButtonLabel>
@@ -90,14 +90,15 @@
   </form>
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <ul class="navbar-nav nav__list">
-      <li class="nav-item nav-link" (click)="getDetailView()"><i class="fas fa-list"></i></li>
+      <li class="nav-link" (click)="getDetailView()"><i class="fas fa-list"></i></li>
       <!-- <li class="nav-item nav-link" (click)="getThView()"><i class="fas fa-th-list"></i></li>-->
     </ul>
-  </div>
-</nav>
+
+  </nav>
+</div>
 
 <!-------------------Daily pictures list----------------------->
 

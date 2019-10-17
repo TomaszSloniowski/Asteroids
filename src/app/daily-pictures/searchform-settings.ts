@@ -1,8 +1,11 @@
-export interface searchFormSettings {
-    keyword: string,
-    year: number,
-    month: number,
-    searchInTitle: boolean,
-    searchInExplanation: boolean
+export class searchFormSettings {
+    constructor (
+    public keyword: string,
+    public year: number,
+    public month: number,
+    public searchInTitle: boolean,
+    public searchInExplanation: boolean
+    )
+    {}
     }
 

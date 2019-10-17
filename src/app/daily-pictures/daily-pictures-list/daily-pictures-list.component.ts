@@ -19,15 +19,9 @@ export class DailyPicturesListComponent implements OnInit {
   /*-------- Search form --------*/
 
   years = [2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
-  months = [1,2,3,4,5,6,7,8,10,11,12];
+  months = [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12];
 
-  FormSettings: searchFormSettings = {
-    keyword: null,
-    year: this.years[0],
-    month: this.months[10],
-    searchInTitle: true,
-    searchInExplanation: true
-  };
+  FormSettings = new searchFormSettings(null, this.years[0], this.months[8], true, true);
 
   pictureOfDay: IPicture;
   $picturesOfDay: Observable<IPicture[]>
@@ -59,15 +53,15 @@ export class DailyPicturesListComponent implements OnInit {
 
   constructor(private service: DailyPicturesService,
     public session: SessionStorageService,
-   // private route: ActivatedRoute
+    // private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.FormSettings.year = this.session.get('year');
+    this.FormSettings.year = this.session.get('year')
     this.FormSettings.month = this.session.get('month');
-    this.FormSettings.keyword = this.session.get('keyword');
-   // this.FormSettings.searchInTitle = this.session.get('searchInTitle');
-   // this.FormSettings.searchInExplanation = this.session.get('searchInExplanation');
+    //  this.FormSettings.keyword = this.session.get('keyword');
+    //  this.FormSettings.searchInTitle = this.session.get('searchInTitle');
+    //  this.FormSettings.searchInExplanation = this.session.get('searchInExplanation');
     this.dateList = JSON.parse(this.session.get('dates'));
     this.$picturesOfDay = this.service.getPicturesList(this.dateList);
   }
@@ -91,11 +85,11 @@ export class DailyPicturesListComponent implements OnInit {
   }
 
   getDetailView() {
-   this.filterByDetail = !this.filterByDetail;
-   this.filterByThumbnail = false;
+    this.filterByDetail = !this.filterByDetail;
+    this.filterByThumbnail = false;
   }
   getThView() {
     this.filterByThumbnail = !this.filterByThumbnail;
     this.filterByDetail = false;
-   }
+  }
 }
