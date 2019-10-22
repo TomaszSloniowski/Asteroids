@@ -84,7 +84,7 @@
         <input type="checkbox" class="form-control" id="Pluton" name="Pluton" ngbButton
           [(ngModel)]="checkboxList.Pluton"> Pluton
       </label>
-     
+
     </div>
      -->
   </form>
@@ -103,7 +103,7 @@
 <!-------------------Daily pictures list----------------------->
 
 <div class="images-list">
-  <table class="table table-hover">
+  <table table table-hover>
     <div *ngFor="let pictureOfDay of $picturesOfDay | async ">
       <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) 
         || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword)) 
