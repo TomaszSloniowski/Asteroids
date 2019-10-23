@@ -1,7 +1,5 @@
 $black: black;
 
-$font_0: sans-serif;
-
 .picture-details-container {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -53,9 +51,7 @@ $font_0: sans-serif;
 }
 
 .bottom__nav__item {
-  font-family: $font_0;
   font-size: 0.9rem;
-  font-weight: 100;
   cursor: pointer;
 }
 
@@ -118,7 +114,7 @@ p.picture__footer {
     padding: 20px 5px 10px 10px;
     margin: 0px;
     font-size: 1.2rem;
-    font-weight: 400px;
+    font-weight: 500;
     text-align: left;
     letter-spacing: 0.03em;
   }

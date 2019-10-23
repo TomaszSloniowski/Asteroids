@@ -36,21 +36,6 @@ export class DailyPicturesListComponent implements OnInit {
   filterByThumbnail: boolean = false;
 
 
-  /*--------- Planets menu --------*/
-  /*checkboxList = {
-    Mercury: false,
-    Venus: false,
-    Earth: false,
-    Mars: false,
-    Jupiter: false,
-    Saturn: false,
-    Uran: false,
-    Neptun: false,
-    Pluto: false,
-    Sun: false,
-    Moon: false,
-  }; */
-
   constructor(private service: DailyPicturesService,
     public session: SessionStorageService,
     // private route: ActivatedRoute

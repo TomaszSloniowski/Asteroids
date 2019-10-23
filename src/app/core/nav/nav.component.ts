@@ -14,7 +14,7 @@ export class NavComponent implements OnInit {
   loggedIn: boolean = false;
   user: string = '';
   SignOutItem: boolean;
-  isNavbarCollapsed: boolean;
+  isNavbarCollapsed: boolean = true;
 
   constructor(
     private route: ActivatedRoute,

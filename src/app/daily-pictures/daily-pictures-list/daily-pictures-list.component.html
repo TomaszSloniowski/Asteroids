@@ -38,65 +38,15 @@
     <div class="button-search">
       <button class="btn btn-outline-success">Search</button>
     </div>
-
-    <!--
-    <div class="btn-group btn-group-toggle checkbox-list-container">
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Earth" name="Earth" ngbButton [(ngModel)]="checkboxList.Earth">
-        Earth
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Sun" name="Sun" ngbButton [(ngModel)]="checkboxList.Sun"> Sun
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Moon" name="Moon" ngbButton [(ngModel)]="checkboxList.Moon">
-        Moon
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Mercury" name="Mercury" ngbButton
-          [(ngModel)]="checkboxList.Mercury"> Mercury
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Venus" name="Venus" ngbButton [(ngModel)]="checkboxList.Venus">
-        Venus
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Mars" name="Mars" ngbButton [(ngModel)]="checkboxList.Mars">
-        Mars
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Jupiter" name="Jupiter" ngbButton
-          [(ngModel)]="checkboxList.Jupiter"> Jupiter
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Saturn" name="Saturn" ngbButton
-          [(ngModel)]="checkboxList.Saturn"> Saturn
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Uran" name="Uran" ngbButton [(ngModel)]="checkboxList.Uran">
-        Uran
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Neptun" name="Neptun" ngbButton
-          [(ngModel)]="checkboxList.Neptun"> Neptun
-      </label>
-      <label class="btn btn-outline-secondary" ngbButtonLabel>
-        <input type="checkbox" class="form-control" id="Pluton" name="Pluton" ngbButton
-          [(ngModel)]="checkboxList.Pluton"> Pluton
-      </label>
-
-    </div>
-     -->
   </form>
 </div>
 
-<div class="container">
+<div class="toggler-container">
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <ul class="navbar-nav nav__list">
       <li class="nav-link" (click)="getDetailView()"><i class="fas fa-list"></i></li>
       <!-- <li class="nav-item nav-link" (click)="getThView()"><i class="fas fa-th-list"></i></li>-->
     </ul>
-
   </nav>
 </div>
 
@@ -126,39 +76,3 @@
   </table>
 
 </div>
-
-<!--
-<div class="images-list__thumbnails" >
-    <div *ngFor="let pictureOfDay of $picturesOfDay | async ">
-      <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) 
-        || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword)) 
-        || FormSettings.keyword == ''
-        || FormSettings.searchInTitle == false
-        || FormSettings.searchInExplanation == false">
-        <a [routerLink]="['../daily-picture-details', pictureOfDay.date]" routerLinkActive="active"
-          class="images-list__link">
-          <div class="images__thumbnail" *ngIf="filterByThumbnail == true" >
-            <img class="image" src={{pictureOfDay.url}}>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-  -->
-
-
-<!--
-        <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword))
-
-checkboxList.Earth == true && pictureOfDay.title.match('Earth')
-|| checkboxList.Sun == true && pictureOfDay.title.match('Sun')
-|| checkboxList.Moon == true && pictureOfDay.title.match('Moon')
-|| checkboxList.Mercury == true && pictureOfDay.title.match('Mercury')
-|| checkboxList.Venus == true && pictureOfDay.title.match('Venus')
-|| checkboxList.Mars == true && pictureOfDay.title.match('Mars')
-|| checkboxList.Jupiter == true && pictureOfDay.title.match('Jupiter')
-|| checkboxList.Saturn == true && pictureOfDay.title.match('Saturn')
-|| checkboxList.Uran == true && pictureOfDay.title.match('Uran')
-|| checkboxList.Neptun == true && pictureOfDay.title.match('Neptun')
-|| checkboxList.Pluton == true && pictureOfDay.title.match('Pluton') 
--->

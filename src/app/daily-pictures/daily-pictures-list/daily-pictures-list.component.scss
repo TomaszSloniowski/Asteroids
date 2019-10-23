@@ -39,6 +39,7 @@ img {
   margin: 0;
 }
 
+
 .custom-checkbox-container {
   display: flex;
   flex-direction: column;
@@ -159,6 +160,10 @@ a.images-list__link {
   padding-left: 20px;
   padding-top: 25px;
   padding-right: 50px;
+}
+
+.toggler-container {
+  display: none;
 }
 
 }
