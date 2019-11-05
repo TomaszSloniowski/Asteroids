@@ -11,10 +11,10 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class NavComponent implements OnInit {
 
-  loggedIn: boolean = false;
-  user: string = '';
+  loggedIn = false;
+  user = '';
   SignOutItem: boolean;
-  isNavbarCollapsed: boolean = true;
+  isNavbarCollapsed = true;
 
   constructor(
     private route: ActivatedRoute,

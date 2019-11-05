@@ -4,7 +4,7 @@ import { UserComponent } from './user/user.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { routes } from './user.routing';
- 
+
 @NgModule({
   declarations: [UserComponent],
   imports: [

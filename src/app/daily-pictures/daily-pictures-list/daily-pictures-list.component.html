@@ -55,11 +55,9 @@
 <div class="images-list">
   <table table table-hover>
     <div *ngFor="let pictureOfDay of $picturesOfDay | async ">
-      <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword)) 
-        || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword)) 
-        || FormSettings.keyword == null
-        || FormSettings.searchInTitle == false
-        || FormSettings.searchInExplanation == false">
+      <div *ngIf="(FormSettings.searchInTitle == true && pictureOfDay.title.match(FormSettings.keyword))
+        || (FormSettings.searchInExplanation == true && pictureOfDay.explanation.match(FormSettings.keyword))
+        || FormSettings.keyword == null">
         <a [routerLink]="['../daily-picture-details', pictureOfDay.date]" routerLinkActive="active"
           class="images-list__link">
           <tbody>

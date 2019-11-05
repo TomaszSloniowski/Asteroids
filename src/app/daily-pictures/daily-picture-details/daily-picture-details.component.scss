@@ -3,7 +3,7 @@ $black: black;
 .picture-details-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  margin: 0;
+  margin: 0px;
   padding: 20px;
 }
 
@@ -46,6 +46,7 @@ $black: black;
 .bottom__nav {
   display: flex;
   justify-content: flex-start;
+  font-size: 0.9rem;
   padding-left: 10px;
   padding-top: 15px;
 }
@@ -63,7 +64,7 @@ $black: black;
 p.picture__footer {
   margin: 0;
   padding: 2px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: $black;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -71,8 +72,7 @@ p.picture__footer {
 
 /*----------------- Media queries --------------------*/
 
-@media (max-width: 48em) {
-
+@media (max-width: 575px) {
   .picture-details-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -86,7 +86,7 @@ p.picture__footer {
     grid-column: 1/2;
     grid-row: 1;
     justify-self: center;
-    width: 100%;
+    max-width: 100%;
     margin: 0px;
     padding: 0px;
   }
@@ -105,24 +105,26 @@ p.picture__footer {
   .picture-explanation {
     display: flex;
     justify-items: start;
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding: 10px 10px 15px 10px;
     letter-spacing: 0.03em;
   }
 
   .picture-header {
+    display: flex;
     padding: 20px 5px 10px 10px;
     margin: 0px;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
     letter-spacing: 0.03em;
   }
 
   p.picture__footer {
+    display: flex;
     margin: 0;
     padding-left: 10px;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: $black;
     font-weight: 400;
     letter-spacing: 0.03em;
@@ -132,4 +134,5 @@ p.picture__footer {
     margin: 0px;
     padding: 0px;
   }
+
 }

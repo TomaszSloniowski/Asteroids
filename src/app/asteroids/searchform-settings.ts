@@ -1,5 +1,5 @@
-export interface searchFormSettings {
-    keyword: string,
+export interface SearchFormSettings {
+    keyword: string;
   //  planetsName: string
   //  date: string
     }

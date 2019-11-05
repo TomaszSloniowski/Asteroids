@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { DailyPicturesService } from '../daily-pictures.service';
 
@@ -21,11 +21,11 @@ export class DailyPictureDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.pictureDate = this.route.snapshot.paramMap.get('date')
-    console.log("Date from snapshot: ", this.pictureDate)
+    this.pictureDate = this.route.snapshot.paramMap.get('date');
+    console.log('Date from snapshot: ', this.pictureDate);
     this.service.getPicture(this.pictureDate).subscribe((picture) => {
       this.picture = picture;
-      console.log("Selected picture from detail: ", this.picture)
+      console.log('Selected picture from detail: ', this.picture);
     });
   }
   goBack() {

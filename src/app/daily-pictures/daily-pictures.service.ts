@@ -11,7 +11,7 @@ import { SessionStorageService } from 'angular-web-storage';
 })
 export class DailyPicturesService {
 
-  private PictureOfDayUrl = 'https://api.nasa.gov/planetary/apod?api_key=zd6kRT5AcbM5cDS6Gwb71YdfgYTXVXn5oyJGwEHp'
+  private PictureOfDayUrl = 'https://api.nasa.gov/planetary/apod?api_key=zd6kRT5AcbM5cDS6Gwb71YdfgYTXVXn5oyJGwEHp';
 
   dateList = [];
   picturesList = [];
@@ -19,6 +19,7 @@ export class DailyPicturesService {
   pictureDate: string;
   dailypicture: IPicture[];
   dt = new Date();
+  daysInMonth: number;
 
   constructor(
     private http: HttpClient,
@@ -26,64 +27,63 @@ export class DailyPicturesService {
   ) { }
 
   getPicturesMonth(year: number, month: number) {
-    console.log (this.dt)
-    var m = month, y = year;
-    if (m == this.dt.getMonth()+1  && (y == this.dt.getFullYear())) {
-      var daysInMonth = this.dt.getDate()
-      console.log("October: ", this.dt.getDate())
+    console.log(this.dt);
+    const m = month, y = year;
+    // tslint:disable-next-line: triple-equals
+    if (m == this.dt.getMonth() + 1 && (y == this.dt.getFullYear())) {
+      this.daysInMonth = this.dt.getDate();
+      console.log('October: ', this.dt.getDate());
     } else {
-      var daysInMonth = new Date(year, month, 0).getDate();
+      this.daysInMonth = new Date(year, month, 0).getDate();
     }
-    console.log("Days in month ", daysInMonth )
-    var endDate = y + '-' + (m < 10 ? '0' + m : m) + '-' + daysInMonth;
-    var startDate = y + '-' + (m < 10 ? '0' + m : m) + '-' + '01';
+    console.log('Days in month ', this.daysInMonth);
+    const endDate = y + '-' + (m < 10 ? '0' + m : m) + '-' + this.daysInMonth;
+    const startDate = y + '-' + (m < 10 ? '0' + m : m) + '-' + '01';
 
     console.log('start date: ', startDate);
-    console.log('end date: ', endDate)
+    console.log('end date: ', endDate);
 
-    var dateList = [];
-    var dateMove = new Date(startDate);
-    var strDate = startDate;
+    const dateList = [];
+    const dateMove = new Date(startDate);
+    let strDate = startDate;
 
     while (strDate < endDate) {
-      var strDate = dateMove.toISOString().slice(0, 10);
+      strDate = dateMove.toISOString().slice(0, 10);
       dateList.push(strDate);
       dateMove.setDate(dateMove.getDate() + 1);
-    };
-    return dateList
-  }; 
-
+    }
+    return dateList;
+  }
 
   getPicturesList(dateList): Observable<IPicture[]> {
-   if (this.session.get('startDate') !== dateList[0]) {
-    this.picturesList = [];
+    if (this.session.get('startDate') !== dateList[0]) {
+      this.picturesList = [];
 
-    let x;
-    for (let i = 0; i <= dateList.length; i++) {
-      x = {
-        date: dateList[i],
+      let x: { date: any; };
+      for (let i = 0; i <= dateList.length; i++) {
+        x = {
+          date: dateList[i],
+        };
+
+        this.http.get<IPicture[]>(this.PictureOfDayUrl, { params: x }).subscribe(
+          dailypicture => {
+            this.dailypicture = dailypicture;
+            this.picturesList.push(this.dailypicture);
+          });
       }
-
-      this.http.get<IPicture[]>(this.PictureOfDayUrl, { params: x }).subscribe(
-        dailypicture => {
-          this.dailypicture = dailypicture;
-          this.picturesList.push(this.dailypicture);
-        });
+      this.session.set('startDate', dateList[0]);
+      // return this.picturesList
+      return of(this.picturesList);
+    } else {
+      return of(this.picturesList);
     }
-    this.session.set('startDate', dateList[0]);
-    //return this.picturesList
-    return of(this.picturesList);
-  }
-  else {
-    return of(this.picturesList);
-  }
 
   }
 
 
   getPicture(pictureDate: string): Observable<IPicture> {
-    let x = { date: pictureDate }
-    return this.http.get<any>(this.PictureOfDayUrl, { params: x })
+    const x = { date: pictureDate };
+    return this.http.get<any>(this.PictureOfDayUrl, { params: x });
   }
 
   private handleError(err: HttpErrorResponse) {

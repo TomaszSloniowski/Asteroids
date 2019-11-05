@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MustMatch }  from './must-match.validator';
-//import { debounceTime } from 'rxjs/operators';
+import { MustMatch } from './must-match.validator';
+// import { debounceTime } from 'rxjs/operators';
 import { SessionStorageService } from 'angular-web-storage';
 import { UserService } from '../user.service';
 
@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
- 
+
   onSubmit() {
       this.submitted = true;
 

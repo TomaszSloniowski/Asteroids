@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DailyPicturesService } from '../daily-pictures.service';
-import { searchFormSettings } from '../searchform-settings';
+import { SearchFormSettings } from '../searchform-settings';
 import { NgForm, NgModel } from '@angular/forms';
 import { IPicture } from '../picture';
 import { Observable } from 'rxjs';
 import { SessionStorageService } from 'angular-web-storage';
-//import { ActivatedRoute } from '@angular/router';
+// import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -21,19 +21,19 @@ export class DailyPicturesListComponent implements OnInit {
   years = [2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
   months = [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12];
 
-  FormSettings = new searchFormSettings(null, this.years[0], this.months[8], true, true);
+  FormSettings = new SearchFormSettings(null, this.years[0], this.months[8], true, true);
 
   pictureOfDay: IPicture;
-  $picturesOfDay: Observable<IPicture[]>
-  keywordValue: string;
+  $picturesOfDay: Observable<IPicture[]>;
+  keywordValue: string = null;
   selectedMonth: number;
   selectedYear: number;
   checkboxListValues = [];
   errorMessage: string;
   dateList = [];
   newDates = [];
-  filterByDetail: boolean = false;
-  filterByThumbnail: boolean = false;
+  filterByDetail = false;
+  filterByThumbnail = false;
 
 
   constructor(private service: DailyPicturesService,
@@ -42,7 +42,7 @@ export class DailyPicturesListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.FormSettings.year = this.session.get('year')
+    this.FormSettings.year = this.session.get('year');
     this.FormSettings.month = this.session.get('month');
     //  this.FormSettings.keyword = this.session.get('keyword');
     //  this.FormSettings.searchInTitle = this.session.get('searchInTitle');
@@ -60,9 +60,9 @@ export class DailyPicturesListComponent implements OnInit {
     this.selectedYear = this.FormSettings.year;
     this.selectedMonth = this.FormSettings.month;
     this.keywordValue = this.FormSettings.keyword;
-    this.newDates = this.service.getPicturesMonth(this.selectedYear, this.selectedMonth)
+    this.newDates = this.service.getPicturesMonth(this.selectedYear, this.selectedMonth);
     this.$picturesOfDay = this.service.getPicturesList(this.newDates);
-    this.dateList = this.newDates
+    this.dateList = this.newDates;
     this.session.set('year', this.selectedYear);
     this.session.set('month', this.selectedMonth);
     this.session.set('dates', JSON.stringify(this.dateList));
